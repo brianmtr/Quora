@@ -282,6 +282,10 @@ small {
       border-radius: 50%;
   }
 
+  .avatar-lg {
+      width: 40px;
+  }
+
   .clickable {
       color: var(--primary);
       font-weight: var(--)var(--primary);
@@ -330,6 +334,10 @@ small {
     background-color: var(--success);
 }
 
+.flash-error {
+    background-color: var(--warning);
+}
+
 /* header *//* header *//* header *//* header */
 .header-search {
     border-radius: var(--border-radius);
@@ -375,4 +383,17 @@ footer {
 
 .rating-down {
     color: var(--warning);
+}
+
+/* question text *//* question text *//* question text */
+.question-text, .question-response-text  {
+    line-height: var(--line-height-hight);
+    white-space: pre-wrap;
+}
+
+/* user profile *//* user profile *//* user profile */
+
+.profile-picture {
+    width: 150px;
+    border-radius: var(--border-radius);
 }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -16,7 +18,7 @@ class Comment
 
     #[ORM\Column(type: 'text')]
     #[Assert\NotBlank(message: 'Veuillez détailler votre réponse')]
-    #[Assert\Length(min: 100, minMessage:'Votre réponse est trop courte')]
+    #[Assert\Length(min: 20, minMessage:'Votre réponse est trop courte')]
     private $content;
 
     #[ORM\Column(type: 'integer')]
@@ -28,6 +30,13 @@ class Comment
     #[ORM\ManyToOne(targetEntity: Question::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
     private $question;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $author;
+
+
+  
 
     public function getId(): ?int
     {
@@ -81,4 +90,17 @@ class Comment
 
         return $this;
     }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
 }
